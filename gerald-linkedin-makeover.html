@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your LinkedIn Makeover — Gerald Rogers · Legendary</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#07080f;
+  --navy:#0b0f1e;--navy-mid:#141929;--navy-card:#1a2236;
+  --gold:#c9a84c;--gold-light:#e8c96a;--gold-bg:#fffcf3;--gold-border:rgba(201,168,76,0.25);
+  --white:#f2f2f5;--warm:#f0eff5;--text:#1a1a2e;--muted:#6b6b8a;--border:#e0dfe9;
+  --red:#dc2626;--red-bg:#fef2f2;--green:#166534;--green-bg:#f0fdf4;
+}
+body{font-family:'Inter',sans-serif;background:var(--warm);color:var(--text);padding:0 0 80px}
+
+/* TOP STRIPE */
+.top-stripe{height:4px;background:linear-gradient(90deg,var(--navy),var(--gold),var(--navy))}
+
+/* PAGE HEADER */
+.page-header{background:var(--navy);padding:40px 60px;border-bottom:1px solid rgba(201,168,76,0.15)}
+.page-header-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.header-eyebrow{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.header-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.header-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#f0eee8;line-height:1.2}
+.header-sub{font-size:.85rem;color:#8a94aa;margin-top:8px;max-width:500px;line-height:1.7}
+.header-badge{background:rgba(201,168,76,.1);border:1px solid var(--gold-border);border-radius:4px;padding:16px 24px;text-align:center;flex-shrink:0}
+.badge-text{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.badge-action{font-size:.82rem;color:#9ba3b8;margin-top:4px}
+
+/* CONTENT */
+.content{max-width:1100px;margin:0 auto;padding:40px 60px}
+
+.section-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);max-width:60px}
+
+/* HEADLINE OPTIONS */
+.headline-options{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.headline-option{background:white;border:1px solid var(--border);border-radius:6px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start;cursor:default}
+.headline-option.recommended{border-color:var(--gold);background:var(--gold-bg);box-shadow:0 0 0 1px rgba(201,168,76,.18)}
+.option-num{font-size:.72rem;font-weight:700;color:var(--muted);width:20px;flex-shrink:0;padding-top:2px}
+.headline-option.recommended .option-num{color:var(--gold)}
+.option-text{font-size:.9rem;color:var(--text);line-height:1.5;flex:1}
+.option-tag{margin-left:auto;flex-shrink:0;padding-top:2px}
+.recommend-badge{background:var(--navy);color:var(--gold);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;white-space:nowrap}
+.option-note{font-size:.75rem;color:var(--muted);margin-top:6px;line-height:1.55}
+
+/* COMPARE GRID */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
+.col-header{padding:14px 20px;border-radius:4px 4px 0 0;display:flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.col-header.before{background:var(--red-bg);color:var(--red);border:1px solid #fecaca;border-bottom:none}
+.col-header.after{background:var(--green-bg);color:var(--green);border:1px solid #86efac;border-bottom:none}
+.col-body{border:1px solid var(--border);border-radius:0 0 4px 4px;overflow:hidden}
+.col-header.after + .col-body{border-color:#86efac}
+.col-header.before + .col-body{border-color:#fecaca}
+
+/* LINKEDIN CARD */
+.li-card{background:white;font-family:'Inter',sans-serif}
+
+/* BANNER */
+.li-banner{height:110px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.banner-before{background:linear-gradient(135deg,#e8e6e0,#d4d0c8)}
+.banner-text-before{font-size:.75rem;color:#9ba3b8;letter-spacing:.1em}
+
+.banner-after{background:var(--navy);position:relative;overflow:hidden}
+/* ambient glow */
+.banner-after::before{content:'';position:absolute;top:-40%;left:30%;width:500px;height:280px;background:radial-gradient(ellipse,rgba(201,168,76,.08) 0%,transparent 65%);pointer-events:none}
+/* subtle circle texture */
+.banner-after::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(201,168,76,.025) 29px),repeating-linear-gradient(90deg,transparent,transparent 28px,rgba(201,168,76,.025) 29px);pointer-events:none}
+
+.banner-inner{position:relative;z-index:2;width:100%;padding:0 22px;display:flex;justify-content:space-between;align-items:flex-end;height:100%;padding-bottom:14px}
+.banner-quote{font-family:'Playfair Display',serif;font-size:.88rem;color:rgba(242,242,245,.85);font-style:italic;line-height:1.5;max-width:78%}
+.banner-quote strong{color:var(--gold);font-style:normal;font-size:.95rem;display:block;margin-bottom:3px}
+.banner-wordmark{font-family:'Playfair Display',serif;font-size:.75rem;font-weight:700;color:rgba(201,168,76,.55);letter-spacing:.12em;text-transform:uppercase;text-align:right;line-height:1}
+
+/* PROFILE */
+.li-profile{padding:0 20px 16px}
+.li-avatar{width:60px;height:60px;border-radius:50%;margin-top:-30px;margin-bottom:10px;border:3px solid white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white}
+.avatar-before{background:#c4bdb0}
+.avatar-after{background:var(--navy)}
+.li-name{font-size:1rem;font-weight:700;color:#000;margin-bottom:3px}
+.li-headline{font-size:.82rem;color:#444;line-height:1.4;margin-bottom:8px}
+.li-location{font-size:.75rem;color:#666}
+
+.li-section{padding:14px 20px;border-top:1px solid #e0e0e0}
+.li-section-title{font-size:.75rem;font-weight:700;color:#000;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+.li-section-body{font-size:.8rem;color:#333;line-height:1.65}
+.li-section-body.muted{color:#888;font-style:italic}
+
+/* CALLOUTS */
+.change-callouts{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.callout{background:var(--green-bg);border:1px solid #86efac;border-radius:4px;padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
+.callout-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:.82rem;color:var(--green);line-height:1.55}
+.callout-text strong{color:#0f4c2a;display:block;margin-bottom:2px;font-size:.8rem}
+
+/* COPY SECTIONS */
+.copy-section{background:white;border:1px solid var(--border);border-radius:6px;padding:24px;margin-bottom:24px}
+.copy-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:10px}
+.copy-text{background:#f7f6fb;border:1px solid var(--border);border-radius:4px;padding:14px;font-size:.83rem;color:var(--text);line-height:1.8;font-family:'Inter',sans-serif;cursor:text;white-space:pre-wrap}
+.btn-copy{margin-top:12px;background:var(--navy);color:white;padding:10px 20px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px;font-family:'Inter',sans-serif;transition:all .2s}
+.btn-copy:hover{background:var(--navy-card)}
+
+/* NOTE BOX */
+.note-box{background:var(--gold-bg);border-left:3px solid var(--gold);padding:14px 18px;border-radius:0 4px 4px 0;font-size:.83rem;color:#5a4a20;line-height:1.7;margin-bottom:28px}
+.note-box strong{color:#3a2e10}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:36px 0}
+
+/* FOOTER */
+footer{max-width:1100px;margin:40px auto 0;padding:20px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--muted)}
+.footer-brand{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--navy);font-weight:600}
+.footer-brand span{color:var(--gold)}
+
+@media(max-width:800px){
+  .content,.page-header{padding:28px 20px}
+  .compare-grid{grid-template-columns:1fr}
+  footer{padding:20px;flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV BAR -->
+<div style="position:sticky;top:0;z-index:9999;background:rgba(7,8,15,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.18);padding:0 32px;height:46px;display:flex;align-items:center;justify-content:space-between;font-family:'Inter',-apple-system,sans-serif">
+  <span style="font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:var(--gold);letter-spacing:.06em">The Signal</span>
+  <span style="font-size:.6rem;color:#4a5270;letter-spacing:.08em;text-transform:uppercase">LinkedIn Transformation · Gerald Rogers · March 19, 2026</span>
+</div>
+
+<div class="top-stripe"></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <div class="header-eyebrow">LinkedIn Transformation · Legendary</div>
+      <div class="header-title">Your Profile, Repositioned.</div>
+      <div class="header-sub">The fastest lever you can pull today — before a website, before an ad, before anything. Purpose-driven leaders are searching for exactly what you offer. This makes sure they find you.</div>
+    </div>
+    <div class="header-badge">
+      <div class="badge-text">Time to implement</div>
+      <div class="badge-action">⏱️ 15–20 minutes</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="note-box">
+    <strong>Why LinkedIn first:</strong> Coaches, creators, and purpose-driven entrepreneurs actively use LinkedIn to find mentors, communities, and experiences that will change their life. Your profile is the first thing they read when they're deciding whether you're the person who can help them. Right now it reads like a bio. The new version reads like a <em>calling</em>.
+  </div>
+
+  <!-- HEADLINE OPTIONS -->
+  <div class="section-label">Headline Options</div>
+
+  <div class="headline-options">
+
+    <div class="headline-option recommended">
+      <div class="option-num">1</div>
+      <div style="flex:1">
+        <div class="option-text">Ending the Lone Wolf Syndrome | Architect of Belonging for Purpose-Driven Leaders | Founder, Legendary</div>
+        <div class="option-note">⭐ <strong>Recommended.</strong> "Lone Wolf Syndrome" is a pattern name — immediately provocative, immediately relatable, and completely ownable. It stops the scroll. "Architect of Belonging" names the transformation. Anyone reading this in 3 seconds knows exactly who you serve and what you solve.</div>
+      </div>
+      <div class="option-tag"><span class="recommend-badge">Recommended</span></div>
+    </div>
+
+    <div class="headline-option">
+      <div class="option-num">2</div>
+      <div style="flex:1">
+        <div class="option-text">I find your Soul Allies | 16 Years · 200+ Retreats · Thousands of BEFORE/AFTER LEGENDARY Stories</div>
+        <div class="option-note">More personal and story-driven. The social proof is strong. Best if you want a warmer, more narrative tone — but "Soul Allies" may need a moment to land on a cold reader.</div>
+      </div>
+    </div>
+
+    <div class="headline-option">
+      <div class="option-num">3</div>
+      <div style="flex:1">
+        <div class="option-text">Sacred Community Architect | Helping Visionaries Find Their Tribe & Live Their Potential | Legendary</div>
+        <div class="option-note">Clean and clear. Works well for SEO on terms like "community" and "visionaries." Slightly safer — which also means slightly less memorable.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <div class="section-label">Before &amp; After</div>
+
+  <div class="compare-grid">
+
+    <!-- BEFORE -->
+    <div class="compare-col">
+      <div class="col-header before">✗ Current Profile — What It's Communicating Now</div>
+      <div class="col-body">
+        <div class="li-card">
+          <div class="li-banner banner-before">
+            <span class="banner-text-before">No banner copy / generic background</span>
+          </div>
+          <div class="li-profile">
+            <div class="li-avatar avatar-before">G</div>
+            <div class="li-name">Gerald Rogers</div>
+            <div class="li-headline">Transformational seminars &amp; retreats for purpose-driven entrepreneurs · Legendary</div>
+            <div class="li-location">📍 United States</div>
+          </div>
+          <div class="li-section">
+            <div class="li-section-title">About</div>
+            <div class="li-section-body muted">Gerald's purpose and passion is guiding people to live their potential and creating intentional sacred communities for creators, visionaries and purpose driven entrepreneurs to gather, grow and collaborate. Since 2008 Gerald has created and led over 200 transformational seminars and retreats, working with thousands of purpose driven entrepreneurs from around...</div>
+          </div>
+          <div class="li-section">
+            <div class="li-section-title">Featured</div>
+            <div class="li-section-body muted" style="font-size:.75rem">[Generic posts / no lead magnet / no call to action]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFTER -->
+    <div class="compare-col">
+      <div class="col-header after">✓ New Profile — The Lone Wolf Antidote</div>
+      <div class="col-body">
+        <div class="li-card">
+          <!-- AFTER BANNER -->
+          <div class="li-banner banner-after">
+            <div class="banner-inner">
+              <div class="banner-quote">
+                <strong>"You were never meant to carry this alone."</strong>
+                Find your soul allies. Live your potential.
+              </div>
+              <div class="banner-wordmark">Legendary</div>
+            </div>
+          </div>
+          <div class="li-profile">
+            <div class="li-avatar avatar-after">G</div>
+            <div class="li-name">Gerald Rogers</div>
+            <div class="li-headline">Ending the Lone Wolf Syndrome | Architect of Belonging for Purpose-Driven Leaders | Founder, Legendary</div>
+            <div class="li-location">📍 United States · <span style="color:#0a66c2">geraldrogers.com</span></div>
+          </div>
+          <div class="li-section">
+            <div class="li-section-title">About</div>
+            <div class="li-section-body">
+              There's an epidemic no one talks about.<br><br>
+              Millions of purpose-driven entrepreneurs, coaches, and visionaries are carrying their mission entirely alone. They have the vision. They have the skill. What they're missing are their <strong>soul allies</strong> — the people who make the impossible feel possible.<br><br>
+              I call it the Lone Wolf Syndrome. And for 16 years, I've been its antidote.<br><br>
+              Since 2008, I've created 200+ transformational retreats, seminars and sacred experiences — working with thousands of purpose-driven leaders from around the world.<br><br>
+              <strong>There is a BEFORE LEGENDARY and an AFTER LEGENDARY.</strong><br><br>
+              → Explore retreats &amp; experiences: geraldrogers.com<br>
+              → Apply to join the Legendary community
+            </div>
+          </div>
+          <div class="li-section">
+            <div class="li-section-title">Featured</div>
+            <div class="li-section-body" style="font-size:.75rem;color:#444">[Link to retreats page · Community application · Origin story post]</div>
+          </div>
+        </div>
+
+        <div class="change-callouts">
+          <div class="callout"><div class="callout-icon">✓</div><div class="callout-text"><strong>Banner becomes the mission statement</strong>"You were never meant to carry this alone." — lands in 1 second.</div></div>
+          <div class="callout"><div class="callout-icon">✓</div><div class="callout-text"><strong>Headline names the enemy</strong>Lone Wolf Syndrome is ownable, searchable, and instantly resonant.</div></div>
+          <div class="callout"><div class="callout-icon">✓</div><div class="callout-text"><strong>About opens with the wound, not the résumé</strong>Your ideal reader sees themselves in the first two lines.</div></div>
+          <div class="callout"><div class="callout-icon">✓</div><div class="callout-text"><strong>Clear next steps</strong>Two CTAs at the bottom — website and community application.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COPY/PASTE SECTIONS -->
+  <div class="section-label">Ready to Copy &amp; Paste</div>
+
+  <div class="copy-section">
+    <div class="copy-title">📌 Recommended LinkedIn Headline</div>
+    <div class="copy-text">Ending the Lone Wolf Syndrome | Architect of Belonging for Purpose-Driven Leaders | Founder, Legendary</div>
+    <button class="btn-copy" onclick="copyText(this)">Copy Headline</button>
+  </div>
+
+  <div class="copy-section">
+    <div class="copy-title">📝 New LinkedIn About Section</div>
+    <div class="copy-text">There's an epidemic no one talks about.
+
+Millions of purpose-driven entrepreneurs, coaches, and visionaries are carrying their mission entirely alone. They have the vision. They have the skill. What they're missing are their soul allies — the people who make the impossible feel possible.
+
+I call it the Lone Wolf Syndrome. And for 16 years, I've been its antidote.
+
+Since 2008, I've created 200+ transformational retreats, seminars and sacred experiences — working with thousands of purpose-driven leaders from around the world. The result isn't just personal growth. It's permanent transformation.
+
+There is a BEFORE LEGENDARY and an AFTER LEGENDARY.
+
+The most important relationships in your life.
+The experiences that defined who you became.
+The clarity that finally let you live your potential.
+
+For many of our community, those things happened here.
+
+I believe fulfillment matters more than achievement.
+I believe depth matters more than scale.
+I believe you were never meant to carry this alone.
+
+If you're a purpose-driven leader, a coach, a creator, a visionary — and you feel the weight of your mission without the tribe to carry it with you — Legendary was built for you.
+
+→ Explore our retreats and experiences: geraldrogers.com
+→ Apply to join the Legendary community</div>
+    <button class="btn-copy" onclick="copyText(this)">Copy About Section</button>
+  </div>
+
+  <div class="copy-section">
+    <div class="copy-title">🖼️ Banner Design Brief <span style="font-size:.72rem;color:var(--muted);font-weight:400">(for your designer or Canva)</span></div>
+    <div class="copy-text">Background: Deep navy (#0b0f1e) — solid, no gradients except a very subtle gold radial glow left-center
+Accent: Gold (#c9a84c)
+Fonts: Playfair Display (serif) for the main quote / Inter for supporting text
+
+Left / Center:
+  Large serif headline in off-white (#f2f2f5):
+    "You were never meant to carry this alone."
+  Below it, smaller, in gold italic:
+    "Find your soul allies. Live your potential."
+
+Bottom right:
+  "Legendary" in gold — Playfair Display, small caps, light opacity (~60%)
+
+Optional: Very faint repeating grid lines or geometric texture for depth (low opacity ~3%)
+
+Dimensions: 1584 × 396px (LinkedIn banner standard)</div>
+    <button class="btn-copy" onclick="copyText(this)">Copy Design Brief</button>
+  </div>
+
+  <div class="copy-section">
+    <div class="copy-title">🔗 Featured Section — What to Pin (3 items)</div>
+    <div class="copy-text">1. Link to geraldrogers.com — "Explore Retreats & Experiences"
+   Thumbnail: event/retreat photo. Caption: "16 years. 200+ retreats. Find out what's next."
+
+2. Community Application Link — "Apply to Join Legendary"
+   Thumbnail: community/group photo. Caption: "You were never meant to carry this alone."
+
+3. Origin Story Post (write once, pin forever) —
+   Title: "I didn't set out to build a community. Here's what actually happened."
+   Angle: Personal story of the moment you realized lone wolves were suffering — and what you did about it.</div>
+    <button class="btn-copy" onclick="copyText(this)">Copy Featured Plan</button>
+  </div>
+
+  <div class="copy-section">
+    <div class="copy-title">✍️ First 5 LinkedIn Posts (to publish over 3–4 weeks)</div>
+    <div class="copy-text">1. THE PATTERN NAME — introduce "Lone Wolf Syndrome"
+   "There's a pattern I've seen in thousands of purpose-driven entrepreneurs over 16 years. I call it the Lone Wolf Syndrome. Here's what it looks like — and why it's costing you more than you think."
+
+2. THE BEFORE/AFTER — tell a transformation story
+   "I met [name/archetype] at a retreat in 2019. He had the vision. He had the skills. What he didn't have — were the right people in the room. Here's what changed in 3 days."
+
+3. THE BELIEF STATEMENT — your philosophy post
+   "I believe fulfillment matters more than achievement. I believe depth matters more than scale. I believe you were never meant to carry this alone. Here's why I built Legendary."
+
+4. THE COMMUNITY POST — what belonging actually means
+   "The most important relationship of your life might not have happened yet. It might be waiting for you in a room you haven't walked into. This is what I've watched happen — over and over — for 16 years."
+
+5. THE INVITATION — direct CTA
+   "If you're a coach, a creator, a visionary — and you feel the weight of your mission without the tribe to share it — I want to talk to you. Here's what Legendary is, and how to apply."</div>
+    <button class="btn-copy" onclick="copyText(this)">Copy Post Ideas</button>
+  </div>
+
+  <hr class="divider">
+
+  <div class="note-box" style="border-left-color:var(--navy)">
+    <strong style="color:var(--navy)">One thing to do right now:</strong> Change your headline first — it shows up everywhere (search results, comment sections, connection requests). That single change will shift how every future visitor reads your entire profile. The About section can follow within the hour.
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">The <span>Signal</span></div>
+  <div>Built for Gerald Rogers · Legendary · March 19, 2026</div>
+</footer>
+
+<script>
+function copyText(btn) {
+  const text = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.style.background = '#166534';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2200);
+  }).catch(() => {
+    // fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.style.background = '#166534';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2200);
+  });
+}
+</script>
+</body>
+</html>

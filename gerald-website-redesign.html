@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerald Rogers — Legendary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#07080f;--navy:#0b0f1e;--gold:#c9a84c;--gold2:#e8c96a;--white:#f2f2f5;--muted:#8a8fa8}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;font-weight:300;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.7}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:28px 48px;background:linear-gradient(to bottom,rgba(7,8,15,.95) 0%,transparent 100%)}
+.nav-logo{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+.nav-cta{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,.4);padding:10px 24px;transition:all .3s}
+.nav-cta:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 48px 80px;position:relative;background:radial-gradient(ellipse at 50% 55%,rgba(201,168,76,.07) 0%,transparent 60%),var(--navy)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:220px;background:linear-gradient(to bottom,transparent,var(--black));pointer-events:none}
+.hero-eyebrow{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:40px;opacity:.85}
+.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(42px,6.5vw,96px);font-weight:400;line-height:1.05;max-width:900px;margin-bottom:32px}
+.hero-headline em{font-style:italic;color:var(--gold)}
+.gold-rule{width:48px;height:1px;background:var(--gold);margin:0 auto 32px;opacity:.7}
+.hero-sub{font-size:18px;font-weight:300;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:52px}
+.btn{display:inline-block;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:18px 48px;text-decoration:none;font-weight:500;transition:all .3s;font-family:'Inter',sans-serif}
+.btn:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid rgba(201,168,76,.5);margin-left:16px}
+.btn-outline:hover{background:rgba(201,168,76,.08);border-color:var(--gold);color:var(--gold)}
+
+/* SECTIONS */
+section{padding:120px 48px;max-width:1100px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:24px}
+
+/* EPIDEMIC */
+.epidemic{padding:120px 48px;background:var(--black)}
+.epidemic-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.epidemic-headline{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.2;margin-bottom:28px}
+.epidemic-headline em{font-style:italic;color:var(--gold)}
+.epidemic-body{font-size:17px;color:var(--muted);line-height:1.9}
+.epidemic-body p+p{margin-top:18px}
+.epidemic-stat{border-left:1px solid rgba(201,168,76,.3);padding:32px 0 32px 36px}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,80px);color:var(--gold);line-height:1}
+.stat-label{font-size:14px;color:var(--muted);margin-top:8px;letter-spacing:.05em}
+
+/* SOLUTION */
+.solution{background:var(--navy);padding:120px 48px}
+.solution-inner{max-width:1100px;margin:0 auto;text-align:center}
+.solution-headline{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:400;line-height:1.1;margin-bottom:20px}
+.solution-headline em{font-style:italic;color:var(--gold)}
+.solution-sub{font-size:18px;color:var(--muted);max-width:560px;margin:0 auto 64px;line-height:1.8}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.pillar{border-top:1px solid rgba(201,168,76,.25);padding-top:28px;text-align:left}
+.pillar-num{font-size:11px;letter-spacing:.3em;color:var(--gold);opacity:.6;margin-bottom:14px}
+.pillar-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;margin-bottom:14px}
+.pillar-body{font-size:15px;color:var(--muted);line-height:1.8}
+
+/* PROOF */
+.proof{padding:120px 48px;background:var(--black)}
+.proof-inner{max-width:1100px;margin:0 auto}
+.proof-headline{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.2;margin-bottom:56px;text-align:center}
+.proof-headline em{color:var(--gold);font-style:italic}
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:8px;overflow:hidden;margin-bottom:48px}
+.ba-col{padding:48px}
+.ba-col.before{background:#0d0e17;border:1px solid rgba(255,255,255,.06)}
+.ba-col.after{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2)}
+.ba-label{font-size:11px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
+.ba-col.before .ba-label{color:var(--muted)}
+.ba-col.after .ba-label{color:var(--gold)}
+.ba-text{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;line-height:1.7;color:var(--white)}
+.ba-col.after .ba-text{color:var(--white)}
+.paige-quote{text-align:center;max-width:680px;margin:0 auto}
+.paige-text{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,28px);font-style:italic;line-height:1.6;margin-bottom:20px}
+.paige-attr{font-size:13px;color:var(--muted);letter-spacing:.1em}
+
+/* ABOUT */
+.about{background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.05) 0%,transparent 60%),var(--navy);padding:120px 48px}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-headline{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.2;margin-bottom:28px}
+.about-headline em{font-style:italic;color:var(--gold)}
+.about-body{font-size:16px;color:var(--muted);line-height:1.9}
+.about-body p+p{margin-top:16px}
+.about-stats{display:flex;flex-direction:column;gap:24px}
+.astat{border-left:1px solid rgba(201,168,76,.3);padding:20px 0 20px 28px}
+.astat-num{font-family:'Playfair Display',serif;font-size:48px;color:var(--gold);line-height:1}
+.astat-label{font-size:14px;color:var(--muted);margin-top:6px}
+
+/* MEMBERSHIP */
+.membership{padding:140px 48px;background:var(--black);text-align:center}
+.membership-inner{max-width:680px;margin:0 auto}
+.membership-headline{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.2;margin-bottom:20px}
+.membership-headline em{color:var(--gold);font-style:italic}
+.membership-sub{font-size:17px;color:var(--muted);line-height:1.9;margin-bottom:40px}
+.waitlist-box{border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:40px;background:rgba(201,168,76,.04)}
+.waitlist-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:.8}
+.waitlist-text{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--white);margin-bottom:24px;line-height:1.5}
+
+/* RETREATS */
+.retreats{background:var(--navy);padding:120px 48px}
+.retreats-inner{max-width:1100px;margin:0 auto}
+.retreat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.retreat-card{background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.12);border-radius:8px;padding:32px;transition:all .3s}
+.retreat-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-3px)}
+.retreat-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px}
+.retreat-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;margin-bottom:12px}
+.retreat-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.retreat-link{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+
+/* FINAL CTA */
+.final-cta{padding:160px 48px;text-align:center;position:relative;overflow:hidden;background:var(--black)}
+.final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none}
+.final-headline{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,80px);font-weight:400;line-height:1.05;margin-bottom:24px;position:relative}
+.final-headline em{font-style:italic;color:var(--gold)}
+.final-sub{font-size:18px;color:var(--muted);max-width:480px;margin:0 auto 52px;line-height:1.9;position:relative}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 48px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);opacity:.6}
+.footer-copy{font-size:12px;color:var(--muted);opacity:.5}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:24px}
+  .epidemic-inner,.about-inner{grid-template-columns:1fr;gap:48px}
+  .pillars{grid-template-columns:1fr}
+  .before-after{grid-template-columns:1fr}
+  section,div[class*="-inner"]{padding:80px 24px}
+  footer{flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Legendary</a>
+  <a href="#apply" class="nav-cta">Apply</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Gerald Rogers · Legendary</p>
+  <h1 class="hero-headline">You were never meant<br>to carry this <em>alone.</em></h1>
+  <div class="gold-rule"></div>
+  <p class="hero-sub">For 16 years, Gerald Rogers has been creating the sacred spaces where purpose-driven leaders find their soul allies — the relationships that change everything.</p>
+  <div>
+    <a href="#apply" class="btn">Apply for a Retreat</a>
+    <a href="#membership" class="btn btn-outline">Join Legendary</a>
+  </div>
+</div>
+
+<!-- THE EPIDEMIC -->
+<div class="epidemic">
+  <div class="epidemic-inner">
+    <div>
+      <p class="section-label">The Epidemic</p>
+      <h2 class="epidemic-headline">There is a name for what you're feeling.<br>It's called <em>Lone Wolf Syndrome.</em></h2>
+      <div class="epidemic-body">
+        <p>Millions of purpose-driven entrepreneurs, coaches, and visionaries are carrying their mission entirely alone. They have the vision. They have the skill. They even have some success.</p>
+        <p>What they don't have are their soul allies — the people who make the impossible feel possible. The tribe that holds them accountable, celebrates their wins, and keeps them from disappearing into the silence of solo work.</p>
+        <p>This isolation is not a character flaw. It's an epidemic. And it's costing the world the full expression of some of its most important leaders.</p>
+      </div>
+    </div>
+    <div>
+      <div class="epidemic-stat" style="margin-bottom:32px">
+        <div class="stat-num">16</div>
+        <div class="stat-label">Years engineering belonging</div>
+      </div>
+      <div class="epidemic-stat" style="margin-bottom:32px">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Retreats, seminars & sacred experiences</div>
+      </div>
+      <div class="epidemic-stat">
+        <div class="stat-num">1000s</div>
+        <div class="stat-label">Of soul alliances formed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE SOLUTION -->
+<div class="solution">
+  <div class="solution-inner">
+    <p class="section-label">The Solution</p>
+    <h2 class="solution-headline">This is what<br><em>Legendary</em> is for.</h2>
+    <p class="solution-sub">Sacred containers where purpose-driven leaders find their tribe, clarify their mission, and unlock the potential they couldn't access alone.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <p class="pillar-num">01</p>
+        <h3 class="pillar-title">Retreats & Experiences</h3>
+        <p class="pillar-body">Transformational gatherings in sacred spaces around the world. Where the most important relationships of your life begin.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">02</p>
+        <h3 class="pillar-title">Masterminds</h3>
+        <p class="pillar-body">Small, intimate, long-form. A circle of aligned peers who will hold you to the highest version of your vision — and celebrate every step.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">03</p>
+        <h3 class="pillar-title">The Legendary Community</h3>
+        <p class="pillar-body">The place where it doesn't end when the retreat does. Your tribe, your ongoing container, your home between experiences.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE PROOF -->
+<div class="proof">
+  <div class="proof-inner">
+    <p class="section-label" style="text-align:center">The Proof</p>
+    <h2 class="proof-headline">There is a <em>before</em> Legendary.<br>And an <em>after.</em></h2>
+    <div class="before-after">
+      <div class="ba-col before">
+        <p class="ba-label">Before Legendary</p>
+        <p class="ba-text">Capable. Driven. Carrying the vision alone. Wondering why, with all you've built, something still feels missing. Successful on the outside. Quietly isolated on the inside.</p>
+      </div>
+      <div class="ba-col after">
+        <p class="ba-label">After Legendary</p>
+        <p class="ba-text">You know your people. You've found your soul allies. The most important relationships in your life — the ones that shaped who you became — happened here. There is no going back.</p>
+      </div>
+    </div>
+    <div class="paige-quote">
+      <p class="paige-text">"The most amazing and important people in my life and the most unforgettable experiences have come because of my involvement in the tribe."</p>
+      <p class="paige-attr">— Paige, Legendary Community</p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <div class="about-inner">
+    <div>
+      <p class="section-label">About Gerald</p>
+      <h2 class="about-headline">The <em>architect</em> of belonging.</h2>
+      <div class="about-body">
+        <p>Since 2008, Gerald Rogers has created over 200 transformational retreats, seminars, and sacred experiences — working with thousands of purpose-driven leaders across the world.</p>
+        <p>His work is built on a single conviction: that fulfillment matters more than achievement. That a beautiful, meaningful life — surrounded by your people — is the actual goal.</p>
+        <p>He rejects the hustle. He rejects the performance. He builds the conditions for people to remember who they are — and find the tribe that sees them fully.</p>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="astat">
+        <div class="astat-num">2008</div>
+        <div class="astat-label">The year it began</div>
+      </div>
+      <div class="astat">
+        <div class="astat-num">200+</div>
+        <div class="astat-label">Sacred experiences created</div>
+      </div>
+      <div class="astat">
+        <div class="astat-num">∞</div>
+        <div class="astat-label">Soul alliances formed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBERSHIP -->
+<div class="membership" id="membership">
+  <div class="membership-inner">
+    <p class="section-label">The Legendary Membership</p>
+    <h2 class="membership-headline">The tribe that stays with you <em>between</em> retreats.</h2>
+    <p class="membership-sub">A monthly container where the Legendary community gathers, grows, and holds each other between experiences. Because belonging shouldn't have an end date.</p>
+    <div class="waitlist-box">
+      <p class="waitlist-label">Coming Soon</p>
+      <p class="waitlist-text">"A place for purpose-driven leaders to gather every month — without waiting for the next retreat."</p>
+      <a href="#apply" class="btn">Join the Waitlist</a>
+    </div>
+  </div>
+</div>
+
+<!-- RETREATS -->
+<div class="retreats">
+  <div class="retreats-inner">
+    <p class="section-label">Experiences</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:400;line-height:1.2">Upcoming Retreats &<br>Sacred Gatherings</h2>
+    <div class="retreat-grid">
+      <div class="retreat-card">
+        <p class="retreat-tag">2026 · Coming Soon</p>
+        <h3 class="retreat-title">The Legendary Gathering</h3>
+        <p class="retreat-desc">A multi-day immersion for purpose-driven leaders. Sacred space, soul allies, and the clarity that only comes when you're truly held.</p>
+        <a href="#apply" class="retreat-link">Express Interest →</a>
+      </div>
+      <div class="retreat-card">
+        <p class="retreat-tag">Ongoing</p>
+        <h3 class="retreat-title">Legendary Mastermind</h3>
+        <p class="retreat-desc">A small circle of aligned peers. Six months. Deep work. The relationships that will outlast everything else you build this year.</p>
+        <a href="#apply" class="retreat-link">Apply →</a>
+      </div>
+      <div class="retreat-card">
+        <p class="retreat-tag">Private</p>
+        <h3 class="retreat-title">VIP Intensive with Gerald</h3>
+        <p class="retreat-desc">A private, full-day experience with Gerald. For leaders at a pivotal moment who need the space to see clearly and choose boldly.</p>
+        <a href="#apply" class="retreat-link">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta" id="apply">
+  <h2 class="final-headline">Find your<br><em>soul allies.</em></h2>
+  <p class="final-sub">You've carried this long enough. The tribe you've been looking for has been looking for you too.</p>
+  <a href="mailto:theprosperityguy@gmail.com?subject=Legendary — I'm Ready" class="btn">Apply to Join Legendary</a>
+</div>
+
+<footer>
+  <span class="footer-logo">Legendary</span>
+  <span class="footer-copy">© 2026 Gerald Rogers · geraldrogers.com</span>
+</footer>
+
+</body>
+</html>

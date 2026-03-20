@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Origin — Gerald Rogers · March 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#07080f;--navy:#0b0f1e;--card:#111624;
+  --gold:#c9a84c;--gold-dim:rgba(201,168,76,0.08);--gold-border:rgba(201,168,76,0.22);
+  --white:#f2f2f5;--grey:#7a84a0;--muted:#4a5270;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{font-family:var(--sans);background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.7;margin:0}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(7,8,15,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.12);height:72px;display:flex;align-items:center;padding:0 40px}
+.nav-brand{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--white);display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;padding-right:24px;border-right:1px solid rgba(255,255,255,.07);margin-right:20px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,.5)}
+.nav-brand span{color:var(--gold)}
+.nav-subtitle{font-family:var(--serif);font-size:.95rem;font-weight:600;color:#b8c5d6;padding-right:20px;border-right:1px solid rgba(255,255,255,.07);margin-right:20px;flex-shrink:0}
+.nav-subtitle span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:#b8c5d6;text-decoration:none;padding:8px 16px;border-radius:4px;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:rgba(201,168,76,.08)}
+
+/* HERO */
+.hero{text-align:center;padding:108px 40px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 40%,rgba(201,168,76,.07) 0%,transparent 65%)}
+.eyebrow{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;display:inline-flex;align-items:center;gap:12px;position:relative}
+.eyebrow::before,.eyebrow::after{content:'';width:22px;height:1px;background:rgba(201,168,76,.5)}
+.hero-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;margin-bottom:14px;position:relative}
+.hero-title .gold{color:var(--gold)}.hero-title .it{font-style:italic}
+.hero-body{font-size:.85rem;color:var(--grey);line-height:1.85;max-width:440px;margin:0 auto 20px;position:relative}
+.hero-body strong{color:var(--white)}
+.hero-arr{font-size:.72rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;position:relative}
+.hero-arr span{color:var(--gold)}
+
+/* CHAPTER CARDS */
+.chapters{max-width:860px;margin:0 auto;padding:0 32px}
+.ch{border:1px solid rgba(201,168,76,.12);border-radius:8px;background:var(--card);margin-bottom:10px;overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s;display:flex;align-items:stretch}
+.ch:hover{border-color:rgba(201,168,76,.32);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.35)}
+.ch-bar{width:4px;background:rgba(201,168,76,.2);flex-shrink:0;transition:background .2s}
+.ch:hover .ch-bar{background:var(--gold)}
+.ch-inner{padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex:1}
+.ch-left{flex:1}
+.ch-top{display:flex;align-items:baseline;gap:12px;margin-bottom:5px}
+.ch-num{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap}
+.ch-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--white);line-height:1.2}
+.ch-title .gold{color:var(--gold);font-style:italic}
+.ch-desc{font-size:.78rem;color:var(--grey);line-height:1.6;max-width:520px}
+.ch-desc strong{color:var(--white)}
+.ch-tag{flex-shrink:0;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,168,76,.5);border:1px solid rgba(201,168,76,.18);padding:6px 12px;border-radius:3px;white-space:nowrap;align-self:center}
+.ch-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.07);border:1px solid var(--gold-border);color:var(--gold);font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border-radius:4px;text-decoration:none;white-space:nowrap;font-family:var(--sans);transition:all .2s}
+.ch-btn:hover{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.45)}
+.ch-arrow{transition:transform .2s}
+.ch:hover .ch-arrow{transform:translateX(3px)}
+
+/* DIVIDER */
+.divider{height:1px;background:rgba(255,255,255,.05);margin:28px auto;max-width:860px}
+
+/* CODE SECTION */
+.code-sec{text-align:center;padding:52px 40px 60px;position:relative;overflow:hidden;margin-top:4px}
+.code-sec::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(201,168,76,.08) 0%,transparent 65%)}
+.code-eye{font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px;display:inline-flex;align-items:center;gap:12px;position:relative}
+.code-eye::before,.code-eye::after{content:'';width:22px;height:1px;background:rgba(201,168,76,.5)}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.08);border:1px solid var(--gold-border);border-radius:40px;padding:7px 18px;margin-bottom:20px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:bdot 2s ease-in-out infinite}
+@keyframes bdot{0%,100%{opacity:1}50%{opacity:.25}}
+.code-title{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:700;line-height:1.1;margin-bottom:12px;max-width:580px;margin-left:auto;margin-right:auto;position:relative}
+.code-title .gold{color:var(--gold);font-style:italic}
+.code-intro{font-size:.82rem;color:var(--grey);line-height:1.85;max-width:440px;margin:0 auto 28px;position:relative}
+.code-intro strong{color:var(--white)}
+.gift{display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;margin:0 auto 28px;position:relative;padding:36px 64px;border:2px solid rgba(201,168,76,.4);border-radius:14px;background:rgba(201,168,76,.06);max-width:420px;transition:all .3s;text-align:center}
+.gift:hover{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.7);transform:translateY(-4px);box-shadow:0 0 60px rgba(201,168,76,.2),0 16px 40px rgba(0,0,0,.5)}
+.gift.gone{display:none}
+.gift-pulse{position:absolute;inset:-2px;border-radius:14px;border:2px solid rgba(201,168,76,.35);animation:gpulse 2s ease-in-out infinite;pointer-events:none}
+@keyframes gpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0;transform:scale(1.06)}}
+.gift-icon{font-size:2.4rem;color:var(--gold);margin-bottom:14px;animation:gspin 8s linear infinite;display:inline-block}
+@keyframes gspin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.gift-label{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--white);margin-bottom:10px}
+.gift-cta{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.code-wrap{opacity:0;transform:translateY(12px) scale(.98);transition:all .85s cubic-bezier(.22,.84,.44,1);margin-bottom:24px;display:inline-block}
+.code-wrap.show{opacity:1;transform:none}
+.code-box{background:rgba(0,0,0,.5);border:1px solid rgba(201,168,76,.22);border-radius:8px;padding:26px 52px;position:relative;overflow:hidden;display:inline-block}
+.code-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05) 0%,transparent 50%,rgba(201,168,76,.05) 100%)}
+.code-label{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px;position:relative}
+.code-word{font-family:monospace;font-size:2.8rem;font-weight:700;letter-spacing:.35em;color:var(--gold);text-shadow:0 0 40px rgba(201,168,76,.22);display:flex;justify-content:center;position:relative}
+.code-char{display:inline-block;opacity:0;transform:translateY(8px);transition:all .42s cubic-bezier(.22,.84,.44,1)}
+.code-char.on{opacity:1;transform:translateY(0)}
+.code-sub{font-size:.63rem;color:var(--muted);margin-top:10px;letter-spacing:.07em;line-height:1.5;position:relative}
+.cryptic{font-family:var(--serif);font-size:.9rem;font-style:italic;color:var(--grey);max-width:420px;margin:0 auto 20px;line-height:1.85;opacity:0;transition:opacity 1.3s ease 2.4s;position:relative}
+.cryptic.show{opacity:1}.cryptic em{color:rgba(201,168,76,.8)}
+.final-line{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.6;margin-bottom:28px;opacity:0;transition:opacity 1.3s ease 1.5s;position:relative}
+.final-line.show{opacity:1}.final-line em{color:var(--gold);font-style:italic}
+.signoff{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;opacity:0;transition:opacity 1s ease 3.8s;position:relative}
+.signoff.show{opacity:1}
+.signoff-text{font-size:.76rem;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.signoff-name{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--gold)}
+.signoff-role{font-size:.6rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.particle{position:fixed;border-radius:50%;pointer-events:none;background:var(--gold);opacity:0;animation:prise linear infinite}
+@keyframes prise{0%{transform:translateY(100vh);opacity:0}10%{opacity:.2}90%{opacity:.07}100%{transform:translateY(-100px);opacity:0}}
+footer{text-align:center;padding:20px;border-top:1px solid rgba(255,255,255,.04);font-size:.57rem;color:var(--muted);letter-spacing:.06em}
+@media(max-width:680px){.chapters{padding:0 12px}.ch-inner{flex-direction:column;align-items:flex-start}.ch-btn{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="top">
+  <a class="nav-brand" href="index.html"><div class="nav-dot"></div>The <span>Signal</span></a>
+  <div class="nav-subtitle">Gerald Rogers · <span>Legendary</span></div>
+  <div class="nav-links">
+    <a class="nav-link" href="about-the-signal.html" target="_blank">What is The Signal?</a>
+    <a class="nav-link" href="gerald-session-summary.html" target="_blank">Summary</a>
+    <a class="nav-link" href="gerald-positioning-strategy.html" target="_blank">Positioning</a>
+    <a class="nav-link" href="gerald-website-redesign.html" target="_blank">Website</a>
+    <a class="nav-link" href="gerald-linkedin-makeover.html" target="_blank">LinkedIn</a>
+    <a class="nav-link" href="gerald-lone-wolf-article.html" target="_blank">Article</a>
+    <a class="nav-link" href="gerald-content-plan.html" target="_blank">Content Plan</a>
+  </div>
+</nav>
+
+<div id="hero" class="hero">
+  <div class="eyebrow">Gerald Rogers · March 19, 2026</div>
+  <h1 class="hero-title">There is a before.<br><span class="it gold">And there is Legendary.</span><br>You are the difference.</h1>
+  <p class="hero-body">Paige said it best: there is a <strong>BEFORE LEGENDARY</strong> and an <strong>AFTER LEGENDARY</strong> in her life. That transformation didn't happen by accident. It happened because you built the room where it was possible — and then you held it open.</p>
+  <div class="hero-arr">your signal, decoded <span>↓</span></div>
+</div>
+
+<div class="chapters">
+  <div class="ch" id="ch1">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter One</span><span class="ch-title">Signal <span class="gold">origin.</span></span></div>
+        <div class="ch-desc">Since 2008. 200+ seminars. A Guatemala retreat where someone said, <em>"I have never felt this safe to be myself."</em> This isn't a business story. <strong>This is a calling that found you — and spent 18 years proving it was real.</strong></div>
+      </div>
+      <a class="ch-btn" href="gerald-session-summary.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch2">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Two</span><span class="ch-title">The Lone Wolf <span class="gold">epidemic.</span></span></div>
+        <div class="ch-desc">Right now, thousands of purpose-driven entrepreneurs — gifted, spiritually awake, doing the most important work of their lives — are doing it completely <strong>alone</strong>. No soul allies. No sacred container. Achieving more and feeling less. This is Lone Wolf Syndrome. And you've spent 18 years building the antidote.</div>
+      </div>
+      <a class="ch-btn" href="gerald-positioning-strategy.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch3">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Three</span><span class="ch-title">From poetic to <span class="gold">powerful.</span></span></div>
+        <div class="ch-desc">"I gather SOUL TRIBE and create sacred PORTALS of WOW and WONDER" is beautiful. It's also the reason your ideal client hesitates before saying yes. This chapter is the translation — <strong>your soul's work, in language that makes purpose-driven leaders think: "That's exactly what I've been looking for."</strong></div>
+      </div>
+      <a class="ch-btn" href="gerald-positioning-strategy.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch4">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Four</span><span class="ch-title">Building the <span class="gold">bridge.</span></span></div>
+        <div class="ch-desc">You're at $100K–$300K. Your goal is $500K+. The gap isn't more events — it's <strong>recurring revenue</strong>. Right now your income arrives in bursts: a retreat fills, money flows, then it stops. This chapter maps the architecture of sustainable Legendary income — one that doesn't require you to fill a room every quarter just to survive.</div>
+      </div>
+      <a class="ch-btn" href="gerald-positioning-strategy.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch5">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Five</span><span class="ch-title">Your new <span class="gold">signal.</span></span></div>
+        <div class="ch-desc">The sentence that stops your ideal client mid-scroll. Sharp, soulful, impossible to ignore. A positioning statement that honours the depth of your work while speaking directly to the <strong>ache of isolation</strong> your people feel right now. No more vague. No more unclear. The message that makes the next Paige think: <em>"Finally. Someone who gets it."</em></div>
+      </div>
+      <a class="ch-btn" href="gerald-positioning-strategy.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch6">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Six</span><span class="ch-title">Your new <span class="gold">presence.</span></span></div>
+        <div class="ch-desc">A new headline. A new About section. The LinkedIn profile that makes a purpose-driven coach in their second year of isolation find you and immediately know: <em>this is where I belong.</em> <strong>Written in your voice — with the commercial precision that turns readers into applicants.</strong></div>
+      </div>
+      <a class="ch-btn" href="gerald-linkedin-makeover.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch7">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Seven</span><span class="ch-title">The Legendary Membership <span class="gold">blueprint.</span></span></div>
+        <div class="ch-desc">The full blueprint for your membership redesign — pricing architecture, delivery model, community structure, and the onboarding sequence that makes members <strong>stay</strong>. This is the bridge from event-income to reliable monthly revenue, designed for your voice, your people, and your way of holding space.</div>
+      </div>
+      <a class="ch-btn" href="gerald-positioning-strategy.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch8">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Eight</span><span class="ch-title">Where you <span class="gold">stand.</span></span></div>
+        <div class="ch-desc">Your Signal Strength Score is <strong>64 / 100.</strong> Strong signal. Inconsistent transmission. Your story is extraordinary. Your proof — Paige, and the hundreds before her — is irrefutable. What's holding you back isn't the work. It's the infrastructure to deliver it consistently. <strong>This chapter shows the exact levers to pull.</strong></div>
+      </div>
+      <a class="ch-btn" href="gerald-session-summary.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch9">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Nine</span><span class="ch-title">The Lone Wolf Syndrome <span class="gold">article.</span></span></div>
+        <div class="ch-desc">The full-length LinkedIn article written in your voice — ready to publish tomorrow. Four opening hooks to choose from. The diagnostic piece that owns the category you've just claimed. Share this, and suddenly you're the person who named the epidemic that's silently costing purpose-driven leaders their potential.</div>
+      </div>
+      <a class="ch-btn" href="gerald-lone-wolf-article.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="ch" id="ch10">
+    <div class="ch-bar"></div>
+    <div class="ch-inner">
+      <div class="ch-left">
+        <div class="ch-top"><span class="ch-num">Chapter Ten</span><span class="ch-title">Your 30-Day Content <span class="gold">blueprint.</span></span></div>
+        <div class="ch-desc">Four weeks of LinkedIn posts, fully mapped. 5 content pillars. 3-4 posts per week. Everything you need to activate your new positioning and begin building the Legendary Membership waitlist — without needing to think about what to post or how to say it.</div>
+      </div>
+      <a class="ch-btn" href="gerald-content-plan.html" target="_blank">Open <span class="ch-arrow">→</span></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<section id="code" class="code-sec">
+  <div class="code-eye">Chapter Nine · The Invitation</div>
+  <div class="badge"><div class="badge-dot"></div>Signal Ambassador &nbsp;·&nbsp; The 22 &nbsp;·&nbsp; March 19, 2026</div>
+  <h2 class="code-title">You don't find this work.<br><span class="gold">This work finds you.</span></h2>
+  <p class="code-intro">You've been building sacred rooms for 18 years. Today, you were invited into one of your own. The Signal exists because people like you — people who trade safety for depth, achievement for <em>fulfillment</em> — deserve a place to be seen at full frequency.<br><br><strong>What follows is your place in something only just beginning.</strong></p>
+
+  <div class="gift" id="gift" onclick="reveal()">
+    <div class="gift-pulse"></div>
+    <div class="gift-icon">✦</div>
+    <div class="gift-label">A final parting gift</div>
+    <div class="gift-cta">Click here to receive it</div>
+  </div>
+
+  <div class="code-wrap" id="codeWrap">
+    <div class="code-box">
+      <div class="code-label">Your Signal Access Code</div>
+      <div class="code-word">
+        <span class="code-char">L</span><span class="code-char">E</span><span class="code-char">G</span><span class="code-char">E</span><span class="code-char">N</span><span class="code-char">D</span><span class="code-char">A</span><span class="code-char">R</span><span class="code-char">Y</span>
+      </div>
+      <div class="code-sub">Keep this. Guard it. It is yours alone.</div>
+    </div>
+  </div>
+
+  <p class="cryptic" id="cryptic">"This code is not just a key to a website.<br>It is your place in something that chooses its people carefully.<br>Share it only with those whose soul you would stake your name on.<br><br>You have always believed fulfillment is more important than achievement.<br>The Signal believes it too.<br><br>Stay close to the frequency.<br>Because at some point — <em>the Signal will call.</em><br><br>When it does, you will want to have this."</p>
+
+  <div class="final-line" id="finalLine">Once you build a portal of wonder —<br><em>the wonder never leaves you.</em></div>
+
+  <div class="signoff" id="signoff">
+    <div class="signoff-text">Gerald. You have been carrying this mission since 2008.<br>You built the rooms. You held the space. You changed lives in the dark, without a spotlight.<br><br>Today, The Signal caught up with you.<br>It's time for the world to feel what's already in these rooms.</div>
+    <div class="signoff-name">Aidan</div>
+    <div class="signoff-role">Founder · The Signal</div>
+  </div>
+</section>
+
+<footer>The Signal &nbsp;·&nbsp; Created with love &nbsp;·&nbsp; For Gerald Rogers &nbsp;·&nbsp; March 19, 2026</footer>
+
+<script>
+// Code reveal — LEGENDARY (9 chars)
+function reveal() {
+  document.getElementById('gift').classList.add('gone');
+  document.getElementById('codeWrap').classList.add('show');
+  document.querySelectorAll('.code-char').forEach(function(c, i) {
+    setTimeout(function() { c.classList.add('on'); }, i * 140 + 380);
+  });
+  setTimeout(function() { document.getElementById('cryptic').classList.add('show'); }, 1600);
+  setTimeout(function() { document.getElementById('finalLine').classList.add('show'); }, 3200);
+  setTimeout(function() { document.getElementById('signoff').classList.add('show'); }, 5000);
+  for (var i = 0; i < 28; i++) (function(j) { setTimeout(spark, j * 80 + 150); })(i);
+}
+function spark() {
+  var p = document.createElement('div'); p.className = 'particle';
+  var s = Math.random()*2+1, d = Math.random()*8+6, dl = Math.random()*1.2;
+  p.style.cssText = 'width:'+s+'px;height:'+s+'px;left:'+(Math.random()*100)+'vw;bottom:-8px;animation-duration:'+d+'s;animation-delay:'+dl+'s';
+  document.body.appendChild(p); setTimeout(function() { p.remove(); }, (d+dl+1)*1000);
+}
+setInterval(spark, 2200);
+</script>
+</body>
+</html>

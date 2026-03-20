@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Signal — Gerald Rogers · March 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#07080f;--navy:#0b0f1e;--dark:#141929;--card:#1a2236;
+  --gold:#c9a84c;--gold-dim:rgba(201,168,76,0.08);--gold-border:rgba(201,168,76,0.22);
+  --cyan:#00d4ff;--cyan-dim:rgba(0,212,255,0.06);--cyan-border:rgba(0,212,255,0.18);
+  --white:#f2f2f5;--grey:#7a84a0;--muted:#4a5270;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;
+}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);min-height:100vh;line-height:1.7}
+
+/* HERO */
+.hero{
+  background:var(--black);padding:80px 20px 72px;
+  border-bottom:1px solid var(--gold-border);
+  position:relative;overflow:hidden;
+}
+.hero-inner{
+  max-width:900px;margin:0 auto;padding:0 60px;
+}
+.hero::before{
+  content:'';position:absolute;top:0;right:0;
+  width:600px;height:600px;
+  background:radial-gradient(circle at 80% 20%,rgba(201,168,76,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;
+  width:500px;height:300px;
+  background:radial-gradient(circle at 20% 80%,rgba(0,212,255,.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.brand{
+  font-family:var(--serif);font-size:.9rem;font-weight:700;
+  display:flex;align-items:center;gap:10px;margin-bottom:56px;position:relative;
+  color:var(--white);
+}
+.brand-dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.brand span{color:var(--gold)}
+
+.hero-eyebrow{
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;position:relative;
+}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold)}
+.hero-date{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:32px}
+
+.hero-title{
+  font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);
+  font-weight:700;line-height:1.08;color:var(--white);margin-bottom:28px;position:relative;
+}
+.hero-title .gold{color:var(--gold)}
+.hero-title .italic{font-style:italic}
+
+.hero-body{
+  font-size:.95rem;color:var(--grey);max-width:620px;line-height:1.9;
+  margin-bottom:40px;position:relative;
+}
+.hero-body strong{color:var(--white)}
+
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--gold-border);border:1px solid var(--gold-border);
+  border-radius:4px;overflow:hidden;max-width:680px;position:relative;
+}
+.stat{background:var(--black);padding:20px 24px}
+.stat-num{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:64px 60px 80px}
+
+/* SECTION */
+.section{margin-bottom:64px}
+.section-eyebrow{
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px;
+}
+.section-eyebrow::before{content:'';width:14px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.2}
+.section-sub{font-size:.88rem;color:var(--grey);line-height:1.8;max-width:640px;margin-bottom:32px}
+.section-sub strong{color:var(--white)}
+
+/* ORIGIN STORY */
+.origin-card{
+  background:var(--gold-dim);border:1px solid var(--gold-border);
+  border-radius:6px;padding:36px 40px;position:relative;overflow:hidden;
+}
+.origin-card::before{
+  content:'"';font-family:var(--serif);font-size:8rem;font-weight:700;
+  color:rgba(201,168,76,.08);position:absolute;top:-10px;left:20px;line-height:1;
+}
+.origin-quote{
+  font-family:var(--serif);font-size:1.2rem;font-style:italic;
+  color:var(--white);line-height:1.7;margin-bottom:20px;position:relative;
+}
+.origin-quote span{color:var(--gold)}
+.origin-body{font-size:.85rem;color:var(--grey);line-height:1.85}
+.origin-body strong{color:var(--white)}
+
+/* INSIGHT GRID */
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.insight-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,.07);
+  border-radius:4px;padding:24px 26px;
+}
+.insight-card.gold-accent{border-color:var(--gold-border);background:var(--gold-dim)}
+.insight-card.cyan-accent{border-color:var(--cyan-border);background:var(--cyan-dim)}
+.insight-label{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  margin-bottom:12px;
+}
+.insight-card.gold-accent .insight-label{color:var(--gold)}
+.insight-card.cyan-accent .insight-label{color:var(--cyan)}
+.insight-card:not(.gold-accent):not(.cyan-accent) .insight-label{color:var(--muted)}
+.insight-headline{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.35}
+.insight-body{font-size:.8rem;color:var(--grey);line-height:1.75}
+.insight-body strong{color:var(--white)}
+
+/* SUPERPOWER BLOCK */
+.superpower{
+  background:var(--dark);border-left:3px solid var(--gold);
+  padding:28px 32px;border-radius:0 4px 4px 0;margin-bottom:20px;
+}
+.superpower-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.superpower-text{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--white);line-height:1.6}
+.superpower-sub{font-size:.8rem;color:var(--grey);margin-top:10px;line-height:1.7}
+
+/* SEQUENCE */
+.sequence{display:flex;flex-direction:column;gap:0}
+.seq-item{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.seq-item:last-child{border-bottom:none}
+.seq-num{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold-dim);border:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:.72rem;font-weight:700;color:var(--gold);font-family:var(--sans);
+}
+.seq-content{}
+.seq-title{font-weight:600;color:var(--white);font-size:.9rem;margin-bottom:4px}
+.seq-body{font-size:.8rem;color:var(--grey);line-height:1.7}
+
+/* THE REPOSITIONING */
+.reposition-compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;
+  margin-bottom:24px;
+}
+.reposition-side{padding:28px 30px}
+.reposition-side.before{background:rgba(255,255,255,.02)}
+.reposition-side.after{background:var(--gold-dim)}
+.rep-label{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.reposition-side.before .rep-label{color:var(--muted)}
+.reposition-side.after .rep-label{color:var(--gold)}
+.rep-item{font-size:.82rem;color:var(--grey);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.5}
+.rep-item:last-child{border-bottom:none}
+.reposition-side.after .rep-item{color:var(--white)}
+
+/* HEADLINE REVEAL */
+.headline-reveal{
+  background:var(--black);border:1px solid var(--gold-border);
+  border-radius:6px;padding:40px;text-align:center;margin-bottom:24px;
+}
+.headline-reveal-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:20px}
+.headline-reveal-text{
+  font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.9rem);
+  font-weight:700;color:var(--white);line-height:1.3;margin-bottom:16px;
+}
+.headline-reveal-sub{font-size:.85rem;color:var(--grey);font-style:italic;line-height:1.7}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;margin-bottom:24px}
+.cost-table th{
+  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding:10px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.cost-table td{
+  font-size:.83rem;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04);
+  color:var(--grey);vertical-align:top;
+}
+.cost-table td:first-child{color:var(--white);font-weight:500}
+.cost-table td.gold{color:var(--gold);font-weight:600}
+.cost-table tr:last-child td{border-bottom:none}
+
+/* REVENUE ARCHITECTURE */
+.revenue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.revenue-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,.07);
+  border-radius:4px;padding:22px;
+}
+.revenue-label{
+  font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;
+  font-weight:700;margin-bottom:10px;
+}
+.revenue-label.one{color:var(--gold)}
+.revenue-label.two{color:var(--cyan)}
+.revenue-label.three{color:var(--muted)}
+.revenue-title{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:8px}
+.revenue-body{font-size:.78rem;color:var(--grey);line-height:1.7}
+
+/* DELIVERABLES */
+.deliverable-list{display:flex;flex-direction:column;gap:10px}
+.deliverable{
+  display:flex;align-items:center;gap:16px;
+  background:var(--dark);border:1px solid rgba(255,255,255,.06);
+  border-radius:3px;padding:14px 18px;
+}
+.deliverable-check{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(201,168,76,.12);border:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:.65rem;color:var(--gold);
+}
+.deliverable-name{font-size:.85rem;color:var(--white);font-weight:500}
+.deliverable-desc{font-size:.75rem;color:var(--muted);margin-left:auto}
+
+/* NEXT STEPS */
+.next-steps{
+  background:var(--gold-dim);border:1px solid var(--gold-border);
+  border-radius:6px;padding:36px 40px;
+}
+.next-steps-title{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.next-steps-sub{font-size:.85rem;color:var(--grey);margin-bottom:28px;line-height:1.7}
+.next-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:14px 0;border-bottom:1px solid var(--gold-border);
+}
+.next-item:last-child{border-bottom:none}
+.next-arrow{color:var(--gold);font-size:.9rem;margin-top:2px;flex-shrink:0}
+.next-content{}
+.next-title{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:3px}
+.next-body{font-size:.78rem;color:var(--grey);line-height:1.65}
+
+/* CLOSING */
+.closing{
+  background:var(--black);border-top:1px solid var(--gold-border);
+  padding:56px 60px;text-align:center;position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:400px;
+  background:radial-gradient(ellipse,rgba(201,168,76,.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.closing-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:16px;position:relative}
+.closing-title span{color:var(--gold);font-style:italic}
+.closing-body{font-size:.9rem;color:var(--grey);max-width:540px;margin:0 auto 32px;line-height:1.9;position:relative}
+.closing-body strong{color:var(--white)}
+.closing-sig{
+  font-family:var(--serif);font-size:1rem;font-style:italic;
+  color:var(--gold);margin-top:32px;position:relative;
+}
+
+.divider{height:1px;background:rgba(255,255,255,.06);margin:48px 0}
+
+footer{
+  text-align:center;padding:28px;
+  font-size:.65rem;color:var(--muted);border-top:1px solid rgba(255,255,255,.04);
+}
+
+@media print{
+  body{background:white;color:#111}
+  .hero{background:#f8f6f0;border-color:#c9a84c}
+  .hero::before,.hero::after,.closing::before{display:none}
+}
+@media(max-width:720px){
+  .hero,.main,.closing{padding:40px 24px}
+  .hero-stats,.insight-grid,.reposition-compare,.revenue-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div style="position:sticky;top:0;z-index:9999;background:rgba(7,8,15,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.18);padding:0 32px;height:46px;display:flex;align-items:center;justify-content:space-between;font-family:'Inter',-apple-system,sans-serif">
+  <a href="http://127.0.0.1:7777/signal-origin.html" style="display:inline-flex;align-items:center;gap:8px;color:#c9a84c;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none">
+    <span style="font-size:.9rem">←</span> Back to your journey
+  </a>
+  <span style="font-size:.6rem;color:#4a5270;letter-spacing:.08em;text-transform:uppercase">Signal Origin · Gerald Rogers · March 19, 2026</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+  <div class="brand"><div class="brand-dot"></div>The <span>Signal</span></div>
+  <div class="hero-eyebrow">Session Summary · For You</div>
+  <div class="hero-date">Thursday, March 19, 2026</div>
+
+  <h1 class="hero-title">
+    You came in describing<br>
+    <span class="italic">portals of wow and wonder.</span><br>
+    You're leaving as something<br>
+    <span class="gold">the world has never named before.</span>
+  </h1>
+
+  <p class="hero-body">
+    This document captures everything we surfaced about you today — your origin, your superpower, the epidemic you were born to solve, and the positioning that finally matches the scale of what you've been building for 18 years. <strong>Every insight in here came from you.</strong> We just held the mirror steady.
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Years of this work</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Retreats &amp; seminars led</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1000s</div>
+      <div class="stat-label">Lives permanently changed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Signal code: LEGENDARY</div>
+    </div>
+  </div>
+  </div><!-- /hero-inner -->
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- ORIGIN STORY -->
+  <div class="section">
+    <div class="section-eyebrow">Where It All Began</div>
+    <h2 class="section-title">The Epidemic Nobody Was Talking About</h2>
+    <p class="section-sub">This work didn't start with a business plan. It started with a personal truth — something you felt before you could name it, and have spent nearly two decades proving out.</p>
+
+    <div class="origin-card">
+      <div class="origin-quote">
+        "The greatest epidemic among visionaries isn't lack of skill or opportunity —<br>
+        <span>it's isolation. The Lone Wolf Syndrome.</span>"
+      </div>
+      <div class="origin-body">
+        Since 2008, Gerald has led more than 200 transformational seminars and retreats — working with thousands of purpose-driven entrepreneurs across every industry. And in every room, in every conversation, across 18 years of deep work with brilliant people, the same wound kept appearing: the feeling of carrying a massive vision <strong>entirely alone.</strong><br><br>
+        Not alone in the logistical sense. Many had teams. Partners. Followers. But truly, soulfully alone at the level that matters — <strong>no one who could really see them.</strong> No one with both the depth and the ambition to walk alongside them. Gerald didn't build Legendary as a business. He built it as an antidote to the most common, least-talked-about cost of being a visionary.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SUPERPOWER -->
+  <div class="section">
+    <div class="section-eyebrow">Your Diagnostic Superpower</div>
+    <h2 class="section-title">You Don't Create Community. You Engineer Belonging.</h2>
+    <p class="section-sub">There are thousands of people who run retreats. There is no one else doing what Gerald actually does — and we now have the language to prove it.</p>
+
+    <div class="superpower">
+      <div class="superpower-label">What actually happens in a Gerald Rogers room</div>
+      <div class="superpower-text">"When purpose-driven leaders find their soul allies, everything changes."</div>
+      <div class="superpower-sub">Gerald creates the conditions — precisely and intentionally — for people to find their "soul allies": the relationships that change the entire trajectory of a life. Not networking. Not connection. Not community in the way we normally mean it. <strong>Soul-level recognition between people who were meant to find each other.</strong> That's the product. That's the result. No one else is making that happen at this scale.</div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card gold-accent">
+        <div class="insight-label">The Container</div>
+        <div class="insight-headline">Sacred space where masks come off</div>
+        <div class="insight-body">Gerald's retreats and masterminds aren't events — they're containers. The distinction matters. A container holds something. It creates the conditions for transformation to happen rather than being the transformation itself. Most facilitators build stages. Gerald builds sacred space.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">The Outcome</div>
+        <div class="insight-headline">Leaders remember who they are</div>
+        <div class="insight-body">Paige said it best: "There is a BEFORE LEGENDARY and an AFTER LEGENDARY in her life." Not a before-and-after workshop. A before-and-after <strong>life.</strong> That's not facilitation. That's a category of transformation that most facilitators can't access and couldn't replicate.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">The Mechanism</div>
+        <div class="insight-headline">Unlocking what isolation locked down</div>
+        <div class="insight-body">Visionaries operating in isolation don't just feel lonely — they operate at a fraction of their potential. The ideas don't flow. The courage shrinks. The vision narrows. Gerald doesn't just end the loneliness. He <strong>unlocks the potential that was being held hostage by it.</strong></div>
+      </div>
+      <div class="insight-card cyan-accent">
+        <div class="insight-label">The Contrarian Truth</div>
+        <div class="insight-headline">Fulfillment is the goal. Not achievement.</div>
+        <div class="insight-body">Gerald's work carries an implicit — and now explicit — counter-culture message: a beautiful, meaningful life is the actual destination. Anti-hustle. Anti-grind. This is not a positioning weakness. In 2026, this is the <strong>most resonant message in the entrepreneurial world.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THE HIDDEN COST — LONE WOLF SYNDROME -->
+  <div class="section">
+    <div class="section-eyebrow">The Problem You Were Born to Solve</div>
+    <h2 class="section-title">Lone Wolf Syndrome Is Costing Visionaries Everything.</h2>
+    <p class="section-sub">This is your diagnosis. The one that's always right — before the breakdown, before the burnout, before they realize the dream they built feels empty.</p>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>What's happening in the isolation</th>
+          <th>The visible symptom</th>
+          <th>The hidden cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No one who truly sees the vision</td>
+          <td>Decisions made in a vacuum</td>
+          <td class="gold">Potential narrows, not expands</td>
+        </tr>
+        <tr>
+          <td>No soul allies to mirror back the truth</td>
+          <td>Blind spots go unnamed for years</td>
+          <td class="gold">Growth plateaus disguised as strategy</td>
+        </tr>
+        <tr>
+          <td>Brilliant people performing aloneness</td>
+          <td>Success arrives but joy doesn't follow</td>
+          <td class="gold">Achievement without fulfillment</td>
+        </tr>
+        <tr>
+          <td>Vision too big to carry solo</td>
+          <td>Energy and momentum quietly leak</td>
+          <td class="gold">Legacy left unrealized</td>
+        </tr>
+        <tr>
+          <td>No sacred container for the real conversation</td>
+          <td>Surface-level community masquerades as belonging</td>
+          <td class="gold">The work never reaches full depth</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="origin-card" style="background:var(--cyan-dim);border-color:var(--cyan-border)">
+      <div class="origin-quote" style="font-size:1rem;">
+        "It's not that they lack talent, drive, or opportunity. <span style="color:var(--cyan)">They're just carrying something too big for one person to carry alone.</span>"
+      </div>
+      <div class="origin-body">Gerald doesn't run retreats. He ends isolation. He ends the quiet, invisible tax that operating alone places on a visionary's output, joy, and legacy. That's not a workshop value proposition. That's a life-changing one — and now you have the language to say it that way.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THE REPOSITIONING -->
+  <div class="section">
+    <div class="section-eyebrow">The Repositioning</div>
+    <h2 class="section-title">From Retreat Leader to The World's Leading Architect of Belonging</h2>
+    <p class="section-sub">You've been doing category-defining work for 18 years. Today we gave it a category — one that belongs entirely to you.</p>
+
+    <div class="reposition-compare">
+      <div class="reposition-side before">
+        <div class="rep-label">Before today</div>
+        <div class="rep-item">"I gather SOUL TRIBE"</div>
+        <div class="rep-item">"Sacred portals of wow and wonder"</div>
+        <div class="rep-item">Spiritual / retreat language</div>
+        <div class="rep-item">Insider vocabulary</div>
+        <div class="rep-item">Buyer has to decode the work</div>
+        <div class="rep-item">Category: retreat facilitator</div>
+        <div class="rep-item">Priced like an event</div>
+      </div>
+      <div class="reposition-side after">
+        <div class="rep-label">After today</div>
+        <div class="rep-item">The world's leading Architect of Belonging</div>
+        <div class="rep-item">Ends the isolation costing visionaries their legacy</div>
+        <div class="rep-item">Precise, powerful, universally felt language</div>
+        <div class="rep-item">Anyone who is successful but isolated gets it instantly</div>
+        <div class="rep-item">The category sells itself</div>
+        <div class="rep-item">Category: Sacred Community Architect</div>
+        <div class="rep-item">Priced like transformation</div>
+      </div>
+    </div>
+
+    <div class="headline-reveal">
+      <div class="headline-reveal-label">Your New Hero Headline</div>
+      <div class="headline-reveal-text">"When purpose-driven leaders find their soul allies,<br>everything changes.<br>Gerald Rogers has been engineering those moments for 16 years."</div>
+      <div class="headline-reveal-sub">Not a tagline. A verdict. Said plainly — and it lands like a truth people have been waiting to hear someone say out loud.</div>
+    </div>
+
+    <div class="superpower">
+      <div class="superpower-label">Your New Category Name</div>
+      <div class="superpower-text">Sacred Community Architect &nbsp;·&nbsp; The Belonging Architect</div>
+      <div class="superpower-sub">Both work. "Sacred Community Architect" carries the full spiritual and structural weight of the work. "The Belonging Architect" translates immediately to any audience — coaches, creators, facilitators, high-performers. <strong>Either way, no one else occupies this category.</strong> That's the point. That's the asset.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- IDEAL CLIENT -->
+  <div class="section">
+    <div class="section-eyebrow">The Client Who Gets Everything From You</div>
+    <h2 class="section-title">Successful. Isolated. Ready to Be Fully Seen.</h2>
+    <p class="section-sub">You've worked with thousands of people. The ones who get the most from Legendary share a specific profile — and now we're building the door they walk through.</p>
+
+    <div class="insight-grid">
+      <div class="insight-card gold-accent">
+        <div class="insight-label">Who they are</div>
+        <div class="insight-headline">Purpose-driven. Accomplished. Quietly alone.</div>
+        <div class="insight-body">Coaches, facilitators, creators, community builders. They've built something real. They're respected in their field. And they're operating at a fraction of their potential because they've never had a room full of people who truly see them — and match their depth.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">What they've tried</div>
+        <div class="insight-headline">Masterminds that felt transactional</div>
+        <div class="insight-body">They've been in groups before. Peer circles. Networking events. Masterminds optimized for tactics and referrals. And they left feeling more alone than when they walked in. They're not looking for more information. <strong>They're looking for depth, belonging, and aligned growth.</strong></div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">What they feel</div>
+        <div class="insight-headline">"No one in my world carries this vision with me"</div>
+        <div class="insight-body">The spouse is supportive but doesn't fully get it. The team executes but can't co-create. The followers admire but can't reciprocate at the same level. Gerald's clients have a name for what they're missing now: a soul ally. And they didn't know they were allowed to ask for one.</div>
+      </div>
+      <div class="insight-card cyan-accent">
+        <div class="insight-label">The proof</div>
+        <div class="insight-headline">"There is a BEFORE and an AFTER LEGENDARY."</div>
+        <div class="insight-body">That's Paige. Not "I got a lot of value from it." Not "it was really good." A before-and-after life. That's the testimonial that defines the category — and the expectation Legendary can now set openly, because <strong>you've delivered it consistently for 18 years.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REVENUE ARCHITECTURE -->
+  <div class="section">
+    <div class="section-eyebrow">The Revenue Architecture</div>
+    <h2 class="section-title">From Event-Based Income to a Recurring Engine</h2>
+    <p class="section-sub">The work is extraordinary. The model hasn't caught up yet. That changes now.</p>
+
+    <div class="revenue-grid">
+      <div class="revenue-card">
+        <div class="revenue-label one">Where you are</div>
+        <div class="revenue-title">Event-driven · $100K–$300K/year</div>
+        <div class="revenue-body">200+ retreats and seminars. Thousands of lives changed. But the income resets with every event — no compound engine, no recurring revenue. You rebuild momentum from scratch every cycle. The work is Legendary. The model creates unnecessary fragility.</div>
+      </div>
+      <div class="revenue-card">
+        <div class="revenue-label two">The gap</div>
+        <div class="revenue-title">No container between events</div>
+        <div class="revenue-body">The community exists during the retreat. Then the energy disperses. People who experienced transformation together have nowhere to sustain it. The retreat ends and the belonging — the thing you spent years creating — has no home to live in. That's the gap. And it's solvable.</div>
+      </div>
+      <div class="revenue-card">
+        <div class="revenue-label three">The opportunity</div>
+        <div class="revenue-title">Legendary Membership · $500K in 12 months</div>
+        <div class="revenue-body">A recurring membership that keeps the community alive between retreats. The container doesn't close when the event ends. The soul allies stay in contact. The belonging compounds. The revenue recurs. <strong>This is the engine Legendary has always needed</strong> — and the work already proves the demand.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+    <div class="sequence">
+      <div class="seq-item">
+        <div class="seq-num">Now</div>
+        <div class="seq-content">
+          <div class="seq-title">Event-based · Under $5K per engagement</div>
+          <div class="seq-body">Revenue range: $100K–$300K/year. Every event carries the full weight of income generation. Brilliant work, inconsistent economics. The impact is there. The recurring engine is not yet.</div>
+        </div>
+      </div>
+      <div class="seq-item">
+        <div class="seq-num">Next</div>
+        <div class="seq-content">
+          <div class="seq-title">Launch Legendary Membership — the recurring container</div>
+          <div class="seq-body">A membership community that lives between retreats. Soul allies stay connected. Depth continues to compound. Monthly recurring revenue replaces the revenue-reset cycle. This isn't a new product — it's the natural home for the transformation you're already creating.</div>
+        </div>
+      </div>
+      <div class="seq-item">
+        <div class="seq-num">→</div>
+        <div class="seq-content">
+          <div class="seq-title">Stack: Membership + Premium Retreats</div>
+          <div class="seq-body">Membership at a recurring price point creates the foundation. Premium retreats — priced at the level of transformation they deliver, not the cost of an "event" — become the peak experiences inside an ongoing journey. Two revenue streams that feed each other.</div>
+        </div>
+      </div>
+      <div class="seq-item">
+        <div class="seq-num">∞</div>
+        <div class="seq-content">
+          <div class="seq-title">$500K in 12 months — a realistic target</div>
+          <div class="seq-body">With a recurring membership engine running alongside premium retreat revenue, $500K is not a stretch. It's math. <strong>The asset already exists.</strong> We're adding the infrastructure to convert it into compound, predictable income.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DELIVERABLES -->
+  <div class="section">
+    <div class="section-eyebrow">What You're Taking With You Today</div>
+    <h2 class="section-title">Everything Yours, Unconditionally</h2>
+    <p class="section-sub">Eight deliverables built specifically for you, from scratch, in one session. All of it yours regardless of what you decide next.</p>
+
+    <div class="deliverable-list">
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Positioning Strategy Document</div>
+        <div class="deliverable-desc">Full repositioning — from retreat facilitator to Belonging Architect</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Category Name &amp; Claim</div>
+        <div class="deliverable-desc">Sacred Community Architect / The Belonging Architect — owned entirely by you</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Brand Messaging Framework</div>
+        <div class="deliverable-desc">Hero headline, USP, and core narrative — ready to use across all surfaces</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Revenue Architecture Blueprint</div>
+        <div class="deliverable-desc">Legendary Membership model — structure, pricing logic, and 12-month path to $500K</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Ideal Buyer Profile</div>
+        <div class="deliverable-desc">Precise profile of the purpose-driven leader who becomes a Legendary member</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Website Messaging Concept</div>
+        <div class="deliverable-desc">Homepage reimagined in your new positioning — Legendary.com as it should exist</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Lone Wolf Syndrome Framework</div>
+        <div class="deliverable-desc">Your proprietary diagnostic — the cost of isolation, quantified and named</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-check">✓</div>
+        <div class="deliverable-name">Session Summary (this document)</div>
+        <div class="deliverable-desc">Everything we discovered, captured and returned to you</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NEXT STEPS -->
+  <div class="next-steps">
+    <h2 class="next-steps-title">Where We Go From Here</h2>
+    <p class="next-steps-sub">The positioning is clear. The category is claimed. The revenue architecture exists. Now it's about building the engine that carries this work to the people who need it most — and making sure the economics finally match the impact.</p>
+
+    <div class="next-item">
+      <div class="next-arrow">→</div>
+      <div class="next-content">
+        <div class="next-title">Claim the category publicly</div>
+        <div class="next-body">Update every surface — website, LinkedIn, social bio — with the new positioning. The Belonging Architect. Sacred Community Architect. Use both and let the market tell you which lands harder. Don't wait. Every day without it is a day spent at a fraction of your signal strength.</div>
+      </div>
+    </div>
+    <div class="next-item">
+      <div class="next-arrow">→</div>
+      <div class="next-content">
+        <div class="next-title">Design the Legendary Membership container</div>
+        <div class="next-body">What does belonging look like between retreats? Monthly calls? A private community? Curated introductions? You already know how to create sacred containers — now we build one that stays open year-round. This is the recurring engine that ends the revenue reset.</div>
+      </div>
+    </div>
+    <div class="next-item">
+      <div class="next-arrow">→</div>
+      <div class="next-content">
+        <div class="next-title">Write the Lone Wolf piece</div>
+        <div class="next-body">The article only you can write — the diagnosis of an epidemic nobody has named. "The most successful people I know are operating at half their potential. Here's why." This is Medium, LinkedIn, Forbes. It's the piece that spreads because it says what people already feel but have never heard articulated.</div>
+      </div>
+    </div>
+    <div class="next-item">
+      <div class="next-arrow">→</div>
+      <div class="next-content">
+        <div class="next-title">Price the transformation, not the event</div>
+        <div class="next-body">If the result is a before-and-after life, the price should reflect that. $5K per engagement is a retreat price. A transformation that changes someone's entire trajectory — their relationships, their capacity, their joy — is worth multiples of that. Paige's testimony is the proof. Use it.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PARTNERSHIP OFFER — THE 22 -->
+<div style="background:var(--black);padding:64px 60px;border-top:1px solid var(--gold-border)">
+  <div style="max-width:900px;margin:0 auto">
+
+    <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:20px;height:1px;background:var(--gold)"></span>
+      An invitation. No strings.
+    </div>
+
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:20px">
+      We'd like to offer you<br><span style="color:var(--gold);font-style:italic">a seat in The 22.</span>
+    </h2>
+
+    <p style="font-size:.92rem;color:var(--grey);max-width:600px;line-height:1.9;margin-bottom:44px">
+      Everything you received today is yours — unconditionally. But there's one more thing we'd like to give you. <strong style="color:var(--white)">Not a pitch. A gift.</strong>
+    </p>
+
+    <!-- THE 22 OFFER CARD -->
+    <div style="background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:6px;padding:40px;margin-bottom:32px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle at 100% 0%,rgba(201,168,76,.06) 0%,transparent 60%);pointer-events:none"></div>
+
+      <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:20px">The 22 · Gifted Session</div>
+
+      <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);line-height:1.3;margin-bottom:16px">
+        Twenty-two seats.<br>Purpose-driven leaders.<br>No agenda but the work.
+      </div>
+
+      <p style="font-size:.88rem;color:var(--grey);line-height:1.9;margin-bottom:28px;max-width:580px">
+        The 22 is a curated session we're gifting to a small number of people whose work we believe in deeply. No sales process. No obligation. Just an extraordinary room — and the kind of conversation that doesn't happen anywhere else.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
+        <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:20px 22px">
+          <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px">What it is</div>
+          <div style="font-size:.82rem;color:var(--grey);line-height:1.75">A single, focused session with 22 hand-selected leaders. The room is the product. What you walk away with depends entirely on who you are — and what you're ready for.</div>
+        </div>
+        <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:20px 22px">
+          <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px">What it costs you</div>
+          <div style="font-size:.82rem;color:var(--grey);line-height:1.75">Nothing. This is a gifted seat. We believe in what you're building and want to be in the room with you — not as a vendor, but as someone who sees your work clearly and wants to contribute to it.</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(7,8,15,.5);border:1px solid rgba(201,168,76,.1);border-radius:4px;padding:18px 22px;margin-bottom:28px">
+        <div style="font-size:.8rem;color:var(--grey);line-height:1.75;font-style:italic">
+          "The 22 exists because we believe certain leaders need to be in the same room together. Not for a transaction. Not for an agenda. For the kind of depth that only happens when the right people are willing to show up fully."
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:4px">Gerald Rogers — your seat is reserved.</div>
+          <div style="font-size:.78rem;color:var(--muted)">Reply to this email and we'll send you everything you need to know.</div>
+        </div>
+        <div style="margin-left:auto;flex-shrink:0">
+          <a href="mailto:theprosperityguy@gmail.com?subject=The%2022%20-%20I'm%20in&body=Hey%20-%20I'd%20love%20the%20seat%20in%20The%2022.%20Let%20me%20know%20the%20details." style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;border-radius:3px;text-decoration:none">
+            Claim Your Seat &nbsp;→
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE MODEL NOTE -->
+    <div style="background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:4px;padding:24px 28px;display:flex;gap:20px;align-items:flex-start">
+      <div style="font-size:1.3rem;flex-shrink:0;margin-top:2px">⚡</div>
+      <div>
+        <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,212,255,.7);font-weight:700;margin-bottom:8px">How we think about partnership</div>
+        <div style="font-size:.88rem;color:var(--white);font-weight:500;margin-bottom:6px">We invest in people whose work changes lives. Then we build the machine around it.</div>
+        <div style="font-size:.8rem;color:var(--grey);line-height:1.75">If The 22 feels like the right room — and something longer-term makes sense — we'll talk about it then. On your terms. No agenda, no pitch, no pressure. Today's session was a gift. The 22 is a gift. What comes next, if anything, comes from genuine alignment. That's the only kind of partnership worth building.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2 class="closing-title">Your signal was always<br><span>this legendary.</span><br>The world just couldn't hear it yet.</h2>
+  <p class="closing-body">
+    Everything in this document came from you. We didn't build a positioning — we excavated one. The work you've been doing since 2008, the epidemic you were quietly solving, the sacred space you've been creating for thousands of people — it always deserved this language. <strong>Now it has it.</strong>
+  </p>
+  <p class="closing-body" style="margin-top:-16px">
+    Watching you articulate this today — the depth of your conviction, the clarity of your diagnosis, the genuine love behind every retreat — it was obvious why people experience a before-and-after LEGENDARY. You're not a retreat facilitator. <strong>You're the only person alive doing what you're actually doing.</strong> The world needs more of this. A lot more.
+  </p>
+  <div class="closing-sig">With admiration and intention,<br>Aidan<br><span style="font-size:.75rem;color:var(--muted);font-style:normal;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase">The Signal</span></div>
+</div>
+
+<footer>
+  The Signal · Created with love for you · Pay only for results. · hello@thesignal.agency
+</footer>
+
+</body>
+</html>

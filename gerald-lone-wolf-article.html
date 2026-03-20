@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lone Wolf Article — Gerald Rogers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#07080f;--navy:#0b0f1e;--gold:#c9a84c;--white:#f2f2f5;--muted:#7a84a0;--body-bg:#fafaf8;--text:#1a1e2e;--border:#e8e4da}
+body{font-family:'Inter',sans-serif;background:var(--body-bg);color:var(--text);padding:0 0 80px}
+.top-stripe{height:4px;background:linear-gradient(90deg,var(--navy),var(--gold),var(--navy))}
+.page-header{background:var(--navy);padding:36px 60px;border-bottom:1px solid rgba(201,168,76,.15)}
+.page-header-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.header-eyebrow{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.header-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#f0eee8;line-height:1.2}
+.header-sub{font-size:.82rem;color:#8a94aa;margin-top:6px}
+.header-badge{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:14px 20px;text-align:center;flex-shrink:0}
+.badge-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.badge-val{font-size:.82rem;color:#9ba3b8;margin-top:4px}
+
+.content{max-width:860px;margin:0 auto;padding:40px 60px}
+
+/* INSTRUCTIONS BOX */
+.instructions{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:6px;padding:24px 28px;margin-bottom:36px}
+.inst-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.inst-item{font-size:.82rem;color:var(--text);line-height:1.6}
+.inst-item strong{display:block;color:var(--navy);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+
+/* ARTICLE CARD */
+.article-card{background:white;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:32px}
+.article-header{background:var(--navy);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.article-header-title{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.copy-btn{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);color:var(--gold);font-family:'Inter',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;border-radius:3px;cursor:pointer;transition:all .2s}
+.copy-btn:hover{background:rgba(201,168,76,.25)}
+.copy-btn.copied{background:rgba(166,201,76,.15);border-color:rgba(166,201,76,.4);color:#a6c94c}
+.article-body{padding:40px;font-size:.95rem;line-height:1.9;color:#2a2a3e}
+.article-body p{margin-bottom:20px}
+.article-body p:last-child{margin-bottom:0}
+.article-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px}
+.article-hook{font-size:1rem;font-weight:500;color:#4a4a6a;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.article-body h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin:28px 0 12px}
+.article-body strong{color:var(--navy)}
+.article-body em{color:#6b5a3e}
+.article-cta{background:var(--navy);color:var(--gold);padding:20px 24px;border-radius:4px;font-style:italic;font-family:'Playfair Display',serif;font-size:.95rem;line-height:1.6;margin-top:8px;display:block}
+
+/* COPY TEXT AREA */
+.copy-area{background:var(--body-bg);border:1px solid var(--border);border-top:none;padding:28px 40px}
+.copy-area-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
+textarea{width:100%;height:180px;font-family:'Inter',sans-serif;font-size:.78rem;color:var(--text);background:white;border:1px solid var(--border);border-radius:4px;padding:14px;resize:vertical;line-height:1.7}
+textarea:focus{outline:2px solid rgba(201,168,76,.4);border-color:transparent}
+
+/* HOOKS SECTION */
+.hooks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.hook-card{background:white;border:1px solid var(--border);border-radius:6px;padding:20px 22px;border-left:3px solid var(--gold)}
+.hook-num{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.hook-text{font-size:.88rem;color:var(--text);line-height:1.6;font-weight:500}
+.hook-why{font-size:.75rem;color:var(--muted);margin-top:6px;line-height:1.5}
+
+.section-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);max-width:60px}
+
+@media(max-width:680px){.content{padding:28px 20px}.article-body{padding:24px}.page-header{padding:28px 20px}.hooks-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top-stripe"></div>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <div class="header-eyebrow">The Signal Agency · LinkedIn Article</div>
+      <div class="header-title">The Lone Wolf Syndrome Article</div>
+      <div class="header-sub">Ready to publish. Written in Gerald's voice. Copy-paste to LinkedIn.</div>
+    </div>
+    <div class="header-badge">
+      <div class="badge-label">Signal Code</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold);margin:4px 0">LEGENDARY</div>
+      <div class="badge-val">March 19, 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="instructions">
+    <div class="inst-label">How to use this</div>
+    <div class="inst-grid">
+      <div class="inst-item"><strong>Where to post</strong>LinkedIn Articles (not a regular post) — this length demands the long-form format</div>
+      <div class="inst-item"><strong>When to post</strong>Tuesday or Wednesday, 8–9am your time. First full week after the session.</div>
+      <div class="inst-item"><strong>What to do</strong>Copy the article text below. Paste into LinkedIn Articles. Add a photo of a retreat or community moment. Publish.</div>
+      <div class="inst-item"><strong>What happens next</strong>Share the article link as a regular post with just the first two lines as the caption. Watch who responds.</div>
+    </div>
+  </div>
+
+  <!-- HOOK OPTIONS -->
+  <div class="section-label">Opening Hook Options</div>
+  <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px;line-height:1.6">The first two lines are everything on LinkedIn. Pick the hook that resonates most — or test all three across different posts.</p>
+  <div class="hooks-grid">
+    <div class="hook-card">
+      <div class="hook-num">Hook A — Recommended</div>
+      <div class="hook-text">I've worked with thousands of successful people.<br>Most of them are quietly falling apart.</div>
+      <div class="hook-why">Pattern interrupt. Stops the scroll immediately. Creates tension that demands resolution.</div>
+    </div>
+    <div class="hook-card">
+      <div class="hook-num">Hook B — More Poetic</div>
+      <div class="hook-text">There's a word for what you're feeling.<br>And it's costing you everything.</div>
+      <div class="hook-why">Speaks directly to the reader who recognises themselves. More intimate and personal.</div>
+    </div>
+    <div class="hook-card">
+      <div class="hook-num">Hook C — Diagnostic</div>
+      <div class="hook-text">After 200+ retreats and 16 years of deep work with visionaries — I've noticed the same invisible wound in almost every single one of them.</div>
+      <div class="hook-why">Leads with credibility. The 16 years earns the right to make the diagnosis.</div>
+    </div>
+    <div class="hook-card">
+      <div class="hook-num">Hook D — Bold Statement</div>
+      <div class="hook-text">The most successful people I know are operating at half their potential.<br>Here's the real reason why.</div>
+      <div class="hook-why">Challenges readers' self-concept. High share potential — people will tag friends in this.</div>
+    </div>
+  </div>
+
+  <!-- THE ARTICLE -->
+  <div class="section-label">The Article — Ready to Publish</div>
+  <div class="article-card">
+    <div class="article-header">
+      <div class="article-header-title">LinkedIn Article · ~850 words · Gerald Rogers</div>
+      <button class="copy-btn" onclick="copyArticle(this)">Copy Article Text</button>
+    </div>
+    <div class="article-body" id="article-display">
+      <div class="article-title">The Lone Wolf Syndrome: The Hidden Epidemic Nobody Is Talking About</div>
+      <div class="article-hook">I've worked with thousands of successful people.<br>Most of them are quietly falling apart.</div>
+
+      <p>Not because they lack skill. Not because they lack vision. Not because they lack drive.</p>
+
+      <p>They're falling apart because they're carrying something too big to carry alone — and somewhere along the way, they decided that asking for help meant they weren't strong enough to deserve what they were building.</p>
+
+      <p>After 16 years and 200+ retreats and transformational experiences, I've seen this pattern so many times I gave it a name: <strong>The Lone Wolf Syndrome.</strong></p>
+
+      <h3>What it looks like from the outside</h3>
+
+      <p>From the outside, these people look fine. More than fine. They're successful by every conventional measure. They're respected in their field. They show up with confidence. They have teams, followers, clients.</p>
+
+      <p>But privately? They're describing a kind of isolation that's hard to articulate to anyone who hasn't felt it. It's not loneliness in the ordinary sense. It's something more specific: <em>the absence of anyone who can truly see the size of the vision they're carrying — and match it.</em></p>
+
+      <p>Their spouse is supportive but doesn't fully get it. Their team executes but can't co-create. Their followers admire but can't reciprocate at depth. So the most important conversations — the ones about fear, about doubt, about whether the whole thing is worth it — never happen. They happen alone, at 2am, in the dark.</p>
+
+      <h3>What it costs</h3>
+
+      <p>The Lone Wolf Syndrome is silent. It doesn't show up on a P&L. But the cost is real.</p>
+
+      <p>Decisions made in a vacuum. Blind spots that go unaddressed for years. Momentum that quietly leaks because there's no one holding you accountable to the highest version of your vision. A nagging sense that even when you hit your goals, <em>something is missing.</em></p>
+
+      <p>I've watched brilliant people shrink their vision by half — not because the vision was too big, but because they were trying to carry it alone. The vision gets calibrated to what one person can hold. And that's a tragedy. Because the world needs the full version.</p>
+
+      <h3>The antidote isn't more hustle</h3>
+
+      <p>The answer to the Lone Wolf Syndrome isn't a better morning routine. It isn't another mastermind full of people talking about their funnels. It isn't more content, more strategy, more performance.</p>
+
+      <p>The answer is what I call your <strong>soul allies</strong> — the people who hold you accountable not just to your goals, but to your potential. The people who see you clearly when you can't see yourself. The people in whose presence the impossible starts to feel possible.</p>
+
+      <p>I've watched people find their soul allies in one of my retreats and walk out different people. Not temporarily different — <em>permanently</em> different. One woman described it as a before-and-after: "There is a BEFORE LEGENDARY and an AFTER LEGENDARY in my life." She wasn't talking about what she learned. She was talking about who she met — and who she became in the presence of the right people.</p>
+
+      <h3>You were never meant to carry this alone</h3>
+
+      <p>I built Legendary because I believe fulfillment matters more than achievement. I believe depth matters more than scale. And I believe the isolation quietly costing so many extraordinary people their joy, their potential, and their legacy — is not inevitable. It's just unaddressed.</p>
+
+      <p>The most important relationships in your life don't have to be found by accident. The experiences that define who you become don't have to wait for luck. The clarity that lets you finally live at full potential doesn't have to come in a breakdown at 2am.</p>
+
+      <p>It can come in a room full of people who were meant to find each other.</p>
+
+      <p>If any of this sounds familiar — if you've been carrying something quietly that you haven't said out loud to anyone yet — I want you to know: what you're feeling has a name. It's not weakness. It's not ingratitude. It's the Lone Wolf Syndrome. And it ends the moment you find your people.</p>
+
+      <blockquote class="article-cta">"You were never meant to carry this alone. The tribe you've been looking for has been looking for you too."</blockquote>
+
+      <p style="margin-top:20px;font-size:.85rem;color:#6b6b8a;border-top:1px solid var(--border);padding-top:16px"><em>Gerald Rogers is the founder of Legendary and has spent 16 years creating the sacred spaces where purpose-driven leaders find their soul allies. If this resonated, follow for more or explore Legendary at geraldrogers.com.</em></p>
+    </div>
+    <div class="copy-area">
+      <div class="copy-area-label">Plain text for copy-paste</div>
+      <textarea id="article-text" readonly>The Lone Wolf Syndrome: The Hidden Epidemic Nobody Is Talking About
+
+I've worked with thousands of successful people.
+Most of them are quietly falling apart.
+
+Not because they lack skill. Not because they lack vision. Not because they lack drive.
+
+They're falling apart because they're carrying something too big to carry alone — and somewhere along the way, they decided that asking for help meant they weren't strong enough to deserve what they were building.
+
+After 16 years and 200+ retreats and transformational experiences, I've seen this pattern so many times I gave it a name: The Lone Wolf Syndrome.
+
+---
+
+What it looks like from the outside
+
+From the outside, these people look fine. More than fine. They're successful by every conventional measure. They're respected in their field. They show up with confidence. They have teams, followers, clients.
+
+But privately? They're describing a kind of isolation that's hard to articulate to anyone who hasn't felt it. It's not loneliness in the ordinary sense. It's something more specific: the absence of anyone who can truly see the size of the vision they're carrying — and match it.
+
+Their spouse is supportive but doesn't fully get it. Their team executes but can't co-create. Their followers admire but can't reciprocate at depth. So the most important conversations — the ones about fear, about doubt, about whether the whole thing is worth it — never happen. They happen alone, at 2am, in the dark.
+
+---
+
+What it costs
+
+The Lone Wolf Syndrome is silent. It doesn't show up on a P&L. But the cost is real.
+
+Decisions made in a vacuum. Blind spots that go unaddressed for years. Momentum that quietly leaks because there's no one holding you accountable to the highest version of your vision. A nagging sense that even when you hit your goals, something is missing.
+
+I've watched brilliant people shrink their vision by half — not because the vision was too big, but because they were trying to carry it alone. The vision gets calibrated to what one person can hold. And that's a tragedy. Because the world needs the full version.
+
+---
+
+The antidote isn't more hustle
+
+The answer to the Lone Wolf Syndrome isn't a better morning routine. It isn't another mastermind full of people talking about their funnels. It isn't more content, more strategy, more performance.
+
+The answer is what I call your soul allies — the people who hold you accountable not just to your goals, but to your potential. The people who see you clearly when you can't see yourself. The people in whose presence the impossible starts to feel possible.
+
+I've watched people find their soul allies in one of my retreats and walk out different people. Not temporarily different — permanently different. One woman described it as a before-and-after: "There is a BEFORE LEGENDARY and an AFTER LEGENDARY in my life." She wasn't talking about what she learned. She was talking about who she met — and who she became in the presence of the right people.
+
+---
+
+You were never meant to carry this alone
+
+I built Legendary because I believe fulfillment matters more than achievement. I believe depth matters more than scale. And I believe the isolation quietly costing so many extraordinary people their joy, their potential, and their legacy — is not inevitable. It's just unaddressed.
+
+The most important relationships in your life don't have to be found by accident. The experiences that define who you become don't have to wait for luck. The clarity that lets you finally live at full potential doesn't have to come in a breakdown at 2am.
+
+It can come in a room full of people who were meant to find each other.
+
+If any of this sounds familiar — if you've been carrying something quietly that you haven't said out loud to anyone yet — I want you to know: what you're feeling has a name. It's not weakness. It's not ingratitude. It's the Lone Wolf Syndrome. And it ends the moment you find your people.
+
+"You were never meant to carry this alone. The tribe you've been looking for has been looking for you too."
+
+---
+
+Gerald Rogers is the founder of Legendary and has spent 16 years creating the sacred spaces where purpose-driven leaders find their soul allies. Follow for more or explore Legendary at geraldrogers.com.</textarea>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copyArticle(btn) {
+  var ta = document.getElementById('article-text');
+  ta.select();
+  document.execCommand('copy');
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'Copy Article Text'; btn.classList.remove('copied'); }, 2500);
+}
+</script>
+</body>
+</html>
